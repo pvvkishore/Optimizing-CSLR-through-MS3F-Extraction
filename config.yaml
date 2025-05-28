@@ -1,0 +1,41 @@
+# 4-Stage Sign Language Recognition Configuration
+
+# Dataset Configuration
+dataset:
+  root_train_folder: "/path/to/your/train/"
+  annotations_folder: "/path/to/your/annotations/"
+  csv_filename: "train_gloss_eng.csv"
+  max_frames: 32
+  test_split: 0.2
+
+# Model Configuration
+model:
+  feature_dim: 1024
+  hidden_dim: 512
+  lstm_hidden: 256
+  keyframe_ratio: 0.7
+  dropout: 0.2
+
+# Training Configuration
+training:
+  batch_size: 4
+  num_epochs: 50
+  learning_rates:
+    visual_encoder: 1.0e-4
+    text_encoder: 2.0e-5
+    conv_gru: 5.0e-4
+    temporal_lstm: 3.0e-4
+    ctc_projection: 3.0e-4
+
+# Hardware Configuration
+hardware:
+  device: "auto"  # auto, cuda, cpu
+  num_workers: 4
+  mixed_precision: true
+
+# Directories
+directories:
+  checkpoints: "checkpoints"
+  results: "evaluation_results"
+  visualizations: "visualizations"
+  logs: "logs"
